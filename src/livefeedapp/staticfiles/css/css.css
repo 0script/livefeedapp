@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	background-color: antiquewhite;	
+}
+
+/* Navbar stiling */
+
+div#header{
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	background-color: coral;
+	padding: 1rem;
+	position: relative;
+}
+
+nav.navbar{
+	font-size: 20px;
+}
+
+nav.navbar a{
+	padding: 0.5rem;
+	text-decoration: none;
+	color: black;
+}
+
+nav.navbar a:hover{
+	background-color: chocolate;
+	border-style: solid;
+	border-top: 5px;
+	border-bottom: 5px;
+	cursor: pointer;
+}
+
+nav.navbar a:active{
+	transform: scale(80%);
+}
+
+button.logout{
+	position: absolute;
+	right: 4%;
+	background-color: transparent;
+	height: 2rem;
+	width: 4rem;
+}
+
+button.logout:hover{
+	transform: scale(130%);
+}
+
+main{
+	display: flex;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: antiquewhite;
+}
+
+main.main-body h1{
+	border-top: solid 1px;
+	
+}
+main.main-body h1,main.main-body h2{
+	width: 100%;
+	background-color: coral;
+	margin: 0;
+	padding: 1rem;
+	text-align: center;
+}
+
+div.feed-container form{
+	width: 35rem;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+}
+
+div.feed-container form input.input-msg{
+	width: 80%;
+	height: 1.8rem;
+	border-right: none;
+}
+
+div.feed-container form input.submit{
+	width: 20%;
+	height: 1.8rem;
+	background-color: #DE7044;
+}
+
+div.feed-container form input.submit:hover{
+	background-color: #FF9F78;
+}
+
+div.feed{
+	position: relative;
+	border-radius: 10px;
+	padding: 0.5rem;
+	border: solid 1px black;
+	margin: 5px;
+	color: black;
+	background-color: whitesmoke;
+}
+
+div.message-header{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+div.message-header h3{
+	margin-right: 5px;
+}
+
+div.feed button{
+	border: none;
+	background-color: transparent;
+	outline: none;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	color: #DE7044;
+	font-size: 20px;
+}
+
+div.feed button:hover{
+	color: red;
+}
+
+p.copyright{
+	background-color: #FF9F78;
+	padding: 1rem;
+	text-align: center;
+	width: 100%;	
+}
+
+/* Login form styling */
+form.form-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: solid 1px black;
+	border-radius: 15px;
+	padding: 1rem;
+	margin-top: 20px;
+}
+
+form.form-containe label{
+	width: 20px;
+	text-align: center;
+}
+
+form.form-container input{
+	margin: 5px;
+	padding: 0.5rem;
+	border-radius: 15px;
+}
+
+input.submit{
+	border-radius: 15px;
+	background-color: #FF9F78;
+	padding: 0.5rem;
+}
+
+input.submit:hover{
+	background-color: bisque;
+}
+
+a.forget-passwd,
+a.create-account{
+	margin: 5px;
+}
+
+
+a.forget-passwd:hover,
+a.create-account:hover{
+	color: blue;
+	cursor: pointer;
+}

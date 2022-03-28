@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+    {% block title %}Login{% endblock title %}
+    {% block main_title %}Login{% endblock main_title %}
+    
+    {% block content %}
+
+        <div class="form.container">
+            {% if errors %}
+                <div>
+                    Error: {{ errors }}
+                </div>
+            {% endif %}
+            <form method="POST" action='.' class="form-container" id="form-container"> {% csrf_token %}
+                {{ form.as_p }}
+                <input class="submit" type="submit" value="Submit"/>
+                <a class="forget-passwd">forget password</a>
+                <a class="create-account" href="../register/">create account</a>
+            </form>        
+        </div>
+
+
+    {% endblock %}

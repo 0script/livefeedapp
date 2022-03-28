@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+    {% block title %}Home{% endblock title %}
+    {% block main_title %}Public Feed{% endblock main_title %}
+    {% block sub_title %}
+        {% if user.username %}
+            Leave a message {{ user.username }}
+        {% else %}
+            Leave a anonymous message ..
+        {% endif %}
+        
+    {% endblock sub_title %}
+    
+    {% block content %}
+
+    {% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Your description">
+        <meta name="0script" content="0script">
+            
+        <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+	    <meta property="og:site_name" content="" /> <!-- website name -->
+	    <meta property="og:site" content="" /> <!-- website link -->
+	    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	    <meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	    <meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	    <meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	    <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+
+        <!-- Webpage Title -->
+        <title>
+            {% block title %}{% endblock title %}
+        </title>
+        
+        <!-- Styles -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/css.css' %}" />
+        
+	    <!-- Favicon  : this bellong to me  register  on fontawesome and use yours -->
+        <script src="https://kit.fontawesome.com/e6fe1098a1.js" crossorigin="anonymous"></script>
+		
+	</head>
+	<body>
+
+		<div class="header" id="header">
+			<nav class="navbar" id="navbar">
+				<a class="navbar-link" href="/">Home</a>
+				<a class="navbar-link" >Report</a>
+			</nav>
+			
+			{% if user.username %}
+				<button class="logout"><a href="logout/">Logout</a></button>
+			{% else %}
+				<button class="logout"><a href="login/">Login</a></button>
+			{% endif %}
+			
+		</div>
+
+		<main class="main-body" id="main-body">
+            <h1 class="main-title">{% block main_title %}{% endblock main_title %}</h1>
+			<h2 class="sub_title">{% block sub_title %}{% endblock sub_title %}</h2>
+			
+            {% block content %}{% endblock %}
+        </main>
+
+			<p class="copyright">Copyright © 2022 0script <a href="https://github.com/0script">0script github </a> </p>
+	</body>
+</html>

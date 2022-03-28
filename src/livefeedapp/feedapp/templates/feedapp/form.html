@@ -1,0 +1,11 @@
+<div class="form-container" id="form-container">
+    <h1 class="title-log-form">Login</h1>
+    <form method="POST" action="." class="form-control">
+        {% csrf_token %}
+        <input class="input" id="input" type="text" name="username" placeholder="Type your username"/>
+        <input class="passwd" id="passwd" type="password" name="password" placeholder="Type your password"/>
+        <input class="submit" type="submit" value="Submit"/>
+    </form>
+    <a class="forget-passwd">forget password</a>
+    <a class="create-account" href="../register/">create account</a>
+</div>
