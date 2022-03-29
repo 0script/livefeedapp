@@ -25,6 +25,8 @@ def register_view(request,*args, **kwargs):
     template_name='feedapp/register.html'
     errors=''
 
+    form=CustomUserCreationForm()
+
     if request.method == 'POST':
         form=CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -43,8 +45,7 @@ def register_view(request,*args, **kwargs):
             # return redirect(index_view)
         errors=form.errors
     
-    form=CustomUserCreationForm()
-
+    
     context={
         'form':form,
         'errors':errors,
