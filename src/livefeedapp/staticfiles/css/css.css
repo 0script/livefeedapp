@@ -185,3 +185,30 @@ a.create-account:hover{
 	color: blue;
 	cursor: pointer;
 }
+
+/* Post Form design */
+form.postform{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+}
+
+form.postform input.message{
+	width: 60%;
+	height: 30px;
+}
+
+form.postform input.input{
+	background-color: coral;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius:15px;
+	border-left: none	;
+	width: 15%;
+	height: 33px;
+}
+
+form.postform input.input:hover{
+	background-color: green;
+}

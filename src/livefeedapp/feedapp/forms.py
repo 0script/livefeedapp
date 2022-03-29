@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import User
+from .models import User,Post
 from django.contrib.auth.forms import UserCreationForm
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model=User
         fields=UserCreationForm.Meta.fields+('tel',)
+
 
 class LoginForm(forms.Form):
     username=forms.CharField(max_length=150,
@@ -21,6 +22,27 @@ class LoginForm(forms.Form):
         )
     )
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
+
+
+class PostForm(forms.ModelForm):
+    
+    text=forms.CharField(
+        max_length=255,
+        required=True,
+        label='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder':'Include message here',
+                'type':'input',
+                'class':'message',
+
+            }
+        )
+    )
+
+    class Meta:
+        model=Post
+        fields=('text',)
 
 
 # class CustomUserCreationForm(UserCreationForm):

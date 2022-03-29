@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-from .forms import CustomUserCreationForm,LoginForm
+from .forms import CustomUserCreationForm,LoginForm,PostForm
 from django.contrib import messages
 from django.contrib.auth import logout,authenticate,login
-from .models import User
+from .models import User,Post
 from django.http import HttpRequest,HttpResponseRedirect
 
 
@@ -11,15 +11,33 @@ from django.http import HttpRequest,HttpResponseRedirect
 def index_view(request,pk='',*args, **kwargs):
     template_name='feedapp/index.html'
 
+    print(request.user)
+    print('the id')
+    print(request.user.id)
+
+    form=PostForm(request.POST or None)
+    posts=Post.objects.filter(hidden=False).order_by('-date_posted').all()
+
+    if form.is_valid():
+        print('is valid')
+        form.save()
+        form=PostForm()
+
+
+
     if request.user.is_authenticated:
         context={
             'username':request.user.username,
+            'form':form,
+            'posts':posts,
         }
     else:
         context={
             'username':'',
+            'form':form,
+            'posts':posts,
         }
-    return render(request, template_name)
+    return render(request, template_name,context)
 
 def register_view(request,*args, **kwargs):
     template_name='feedapp/register.html'

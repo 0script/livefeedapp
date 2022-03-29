@@ -10,7 +10,12 @@
         {% endif %}
         
     {% endblock sub_title %}
-    
-    {% block content %}
 
+    {% block content %}
+        <div class="feed-container">
+
+            {% include 'feedapp/postform.html' %}
+            {%include 'feedapp/listpost.html' %}
+        </div>
+        
     {% endblock %}
