@@ -24,6 +24,23 @@ class LoginForm(forms.Form):
     password=forms.CharField(label='Password', widget=forms.PasswordInput)
 
 
+class PostMsgForm(forms.Form):
+    
+    text=forms.CharField(
+        max_length=255,
+        required=True,
+        label='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder':'Include message here',
+                'type':'input',
+                'class':'message',
+
+            }
+        )
+    )
+
+
 class PostForm(forms.ModelForm):
     
     text=forms.CharField(
@@ -38,6 +55,10 @@ class PostForm(forms.ModelForm):
 
             }
         )
+    )
+
+    user=forms.IntegerField(
+        widget=forms.HiddenInput()
     )
 
     class Meta:

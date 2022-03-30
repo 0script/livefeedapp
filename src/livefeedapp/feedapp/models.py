@@ -11,7 +11,7 @@ class User(AbstractUser):
 
 class Post(models.Model):
     'Model For making post'
-    user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=22)
+    user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text=models.CharField(max_length=280)
     date_posted=models.DateTimeField(auto_now_add=True)
     hidden=models.BooleanField(default=False)

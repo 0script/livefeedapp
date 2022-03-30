@@ -76,6 +76,15 @@ main.main-body h1,main.main-body h2{
 	text-align: center;
 }
 
+div.feed-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	
+}
+
 div.feed-container form{
 	width: 35rem;
 	padding: 5px;
@@ -211,4 +220,51 @@ form.postform input.input{
 
 form.postform input.input:hover{
 	background-color: green;
+}
+
+/* box message styling */
+
+div.contain-feed{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+div.feed{
+	position: relative;
+	border-radius: 10px;
+	padding: 0.5rem;
+	border: solid 1px black;
+	margin: 5px;
+	color: black;
+	background-color: whitesmoke;
+	width: 60%;
+}
+
+
+div.message-header{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+div.message-header h3{
+	margin-right: 5px;
+}
+
+div.feed button{
+	border: none;
+	background-color: transparent;
+	outline: none;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	color: #DE7044;
+	font-size: 20px;
+}
+
+div.feed button:hover{
+	color: red;
 }

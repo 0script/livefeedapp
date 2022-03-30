@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import CustomUserCreationForm,LoginForm,PostForm
+from .forms import CustomUserCreationForm,LoginForm,PostForm,PostMsgForm
 from django.contrib import messages
 from django.contrib.auth import logout,authenticate,login
 from .models import User,Post
@@ -15,28 +15,35 @@ def index_view(request,pk='',*args, **kwargs):
     print('the id')
     print(request.user.id)
 
-    form=PostForm(request.POST or None)
-    posts=Post.objects.filter(hidden=False).order_by('-date_posted').all()
-
-    if form.is_valid():
-        print('is valid')
-        form.save()
-        form=PostForm()
-
-
+    
 
     if request.user.is_authenticated:
-        context={
+        user={
             'username':request.user.username,
-            'form':form,
-            'posts':posts,
+            'id':request.user.id,
         }
     else:
-        context={
+        user={
             'username':'',
-            'form':form,
-            'posts':posts,
+            'id':22,
         }
+
+    form=PostMsgForm(request.POST or None)
+    posts=Post.objects.filter(hidden=False).order_by('-date_posted').all()
+    
+    if form.is_valid():
+        print('is valid')
+        print(form.cleaned_data['text'])
+        Post.objects.create(text=form.cleaned_data['text'],user=User.objects.get(id=user['id']))
+    else:
+        print(form.errors)
+        form=PostMsgForm()
+
+    context={
+        'username':user['username'],
+        'form':form,
+        'posts':posts,
+    }
     return render(request, template_name,context)
 
 def register_view(request,*args, **kwargs):
