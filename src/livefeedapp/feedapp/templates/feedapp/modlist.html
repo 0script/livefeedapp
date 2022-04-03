@@ -1,0 +1,82 @@
+<div class="contain-feed">
+    
+    {% if posts %}
+        {% for post in posts  %}
+            <div class="feed">
+                <div class="message-header">
+                    <h3 class="message-title">
+                        {{post.user}}
+                    </h3>
+                    {% if  post.hidden%}
+
+                        <p class="message-head-info">Hiden : {{ post.date_hiden }}</p>
+                    {% else %}
+                        <p class="message-head-info">Posted : {{ post.date_posted }}</p>
+                    {% endif %}
+                </div>
+                <div class="message">
+                    {{ post.text }}
+                </div>
+                
+                {% if post.reported and not post.hidden %}
+                    <button title="Hide" class="hide" id="{{ post.id }}">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                {% elif post.hidden %}
+                    <button title="Unreport" class="unreport" id="{{ post.id }}">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                    </button>
+                {% endif %}
+
+            </div>
+
+        {% endfor %}    
+    {% else %}
+            <h2>No Post To Moderate</h2>
+    {% endif %}
+<div>
+
+<script type="text/javascript">
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete") {
+        
+            console.log('is ready');
+            let btns_hidde=document.querySelectorAll('button.hide');
+            let btns_unhid=document.querySelectorAll('button.unreport');
+
+            btns_hidde.forEach(btn=>{
+                btn.addEventListener('click',(e)=>{	
+                    /* FETCH API */
+                    const url='http://localhost:8000/hidde/'+btn.id;
+                
+                    console.log(btn);
+                
+                    console.log(url);
+                    console.log('fetch aaa');
+                    fetch(url)
+                        .then(response=>{
+                            btn.innerHTML='<i class="fa-solid fa-arrow-rotate-left"></i>';
+                        })
+                        .catch(err=>console.log(err));
+                });
+            });
+
+            btns_unhid.forEach(btn=>{
+                btn.addEventListener('click',(e)=>{	
+                    /* FETCH API */
+                    const url='http://localhost:8000/unhidde/'+btn.id;
+                
+                    console.log(btn);
+                
+                    console.log(url);
+                    console.log('fetch aaa');
+                    fetch(url)
+                        .then(response=>{
+                            console.log('Success!');
+                        })
+                        .catch(err=>console.log(err));
+                });
+            });
+        }
+    }		   
+</script>

@@ -35,11 +35,14 @@
 		<div class="header" id="header">
 			<nav class="navbar" id="navbar">
 				<a class="navbar-link" href="/">Home</a>
-				<a class="navbar-link" >Report</a>
+				
+				{% if ismod %}
+					<a class="navbar-link" href="moderator/">Report</a>
+				{% endif %}			
 			</nav>
 			
 			{% if user.username %}
-				<button class="logout"><a href="logout/">Logout</a></button>
+				<button class="logout"><a href="{% url 'logout' %}">Logout</a></button>
 			{% else %}
 				<button class="logout"><a href="login/">Login</a></button>
 			{% endif %}
@@ -48,7 +51,9 @@
 
 		<main class="main-body" id="main-body">
             <h1 class="main-title">{% block main_title %}{% endblock main_title %}</h1>
-			<h2 class="sub_title">{% block sub_title %}{% endblock sub_title %}</h2>
+			<h2 class="sub_title">{% block sub_title %}{% endblock sub_title %}
+				
+			</h2>
 			
             {% block content %}{% endblock %}
         </main>

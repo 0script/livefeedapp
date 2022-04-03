@@ -14,13 +14,19 @@ class Post(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text=models.CharField(max_length=280)
     date_posted=models.DateTimeField(auto_now_add=True)
+    reported=models.BooleanField(default=False)
     hidden=models.BooleanField(default=False)
     date_hiden=models.DateTimeField(blank=True,null=True)
     hidden_by=models.ForeignKey(settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='Janny Who Hide+')
+        related_name='Mod Who Hide+')
+    
+
+
+    class Meta:
+        permissions = [('can_hide_post', 'Can hide post')]
 
     def __str__(self):
         return self.text

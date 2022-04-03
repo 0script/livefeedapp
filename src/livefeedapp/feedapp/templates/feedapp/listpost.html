@@ -1,18 +1,48 @@
 <div class="contain-feed">
     {% for post in posts  %}
-        <div class="feed">
+		{% if not post.hidden %}
+			<div class="feed">
+				<div class="message-header">
+					<h3 class="message-title">
+						{{post.user}}
+					</h3>
+					<p class="message-head-info">{{ post.date_posted }}</p>
+					
+				</div>
+				<div class="message">
+					{{ post.text }}
+				</div>
+				<button title="Report" class="report" id="{{ post.id }}" ><i class="fa-solid fa-flag"></i></button>
+			</div>
+		{% endif %}
 
-			<div class="message-header">
-				<h3 class="message-title">
-					{{post.user}}
-                </h3>
-			    <p class="message-head-info">{{ post.date_posted }}</p>
-                
-			</div>
-			<div class="message">
-				{{ post.text }}
-			</div>
-			<button><i class="fa-solid fa-circle-xmark"></i></button>
-        </div>
-    {% endfor %}
+		<script type="text/javascript">
+			document.onreadystatechange = function () {
+				if (document.readyState == "complete") {
+					
+					console.log('is ready');
+					
+					let btns=document.querySelectorAll('button.report');
+					btns.forEach(btn=>{
+						btn.addEventListener('click',(e)=>{	
+							/* FETCH API */
+							const url='http://localhost:8000/report/'+btn.id;
+							
+							console.log(url);
+							console.log('fetch aaa');
+							fetch(url)
+								.then(response=>{
+									console.log('ok finish gameeee');
+									/* Change opacity */
+									btn.parentNode.style.opacity=0.5;
+
+								})
+								.catch(err=>console.log(err));
+						});
+					});
+					
+			  }
+			}		   
+		</script>
+	{% endfor %}
 <div>

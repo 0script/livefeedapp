@@ -222,6 +222,34 @@ form.postform input.input:hover{
 	background-color: green;
 }
 
+/* Mods button styling */
+div.mod-btns{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	width: 100%;
+	background-color: white;
+}
+
+div.mod-btns button{
+	width: 150px;
+	padding: 1rem;
+	background-color: #FF9F78;
+	justify-content: center;
+	text-align: center;
+	border-radius: 50%;
+	border: solid 2px aliceblue;
+	margin: 5px;
+}
+
+div.mod-btns button:hover{
+	cursor: pointer;
+	background-color: chocolate;
+	box-shadow: inset;
+}
+
 /* box message styling */
 
 div.contain-feed{

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+    {% block title %}Moderation{% endblock title %}
+    {% block main_title %}Public Feed{% endblock main_title %}
+    {% block sub_title %}
+        {% if user.username %}
+            Moderator Space {{ user.username }}
+        {% else %}
+            Moderate The Chat
+        {% endif %}
+        
+    {% endblock sub_title %}
+
+    {% block content %}
+        <div class="feed-container">
+            {%include 'feedapp/modlist.html' %}
+        </div>
+        
+    {% endblock %}
