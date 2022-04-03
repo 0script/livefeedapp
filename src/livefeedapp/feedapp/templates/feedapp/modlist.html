@@ -49,10 +49,6 @@
                     /* FETCH API */
                     const url='http://localhost:8000/hidde/'+btn.id;
                 
-                    console.log(btn);
-                
-                    console.log(url);
-                    console.log('fetch aaa');
                     fetch(url)
                         .then(response=>{
                             btn.innerHTML='<i class="fa-solid fa-arrow-rotate-left"></i>';
@@ -66,10 +62,6 @@
                     /* FETCH API */
                     const url='http://localhost:8000/unhidde/'+btn.id;
                 
-                    console.log(btn);
-                
-                    console.log(url);
-                    console.log('fetch aaa');
                     fetch(url)
                         .then(response=>{
                             console.log('Success!');
